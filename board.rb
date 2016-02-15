@@ -2,7 +2,7 @@ require "./exceptions"
 class Board
   attr_accessor :grid
   def initialize
-    @grid = Array.new(8) { Array.new(8) }
+    @grid = Array.new(8) { Array.new(8) { "   " } }
 
   end
 
@@ -13,6 +13,11 @@ class Board
   def []=(pos, value)
     @grid[pos[0]][pos[1]] = value
   end
+
+  def in_bounds?(pos)
+    pos.all? { |x| x.between?(0, 7) }
+  end
+
 
   def move(start_pos, end_pos)
     piece = self[start_pos]
