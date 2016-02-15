@@ -14,6 +14,11 @@ class Piece
   #   end
   # end
 
+  def valid_move?(pos)
+    @board.in_bounds?(pos) &&
+    (@board[pos].nil? || @board[pos].color != self.color)
+  end
+
   protected
   attr_reader :pos, :color, :board
 

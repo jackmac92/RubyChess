@@ -14,7 +14,7 @@ class Pawn < Piece
 
     attack_dirs.each do |coord|
       new_pos = [pos[0] + coord[0], pos[1] + coord[1]]
-      if board.in_bounds?(new_pos) && !board[new_pos].nil?
+      if valid_move?(new_pos)
         new_dirs << coord
       end
     end

@@ -14,8 +14,8 @@ require "./pawn.rb"
 
 require "byebug"
 
-a = Board.new
-a[[2,0]] = 5
-a[[2,2]] = 5
-pwn = Pawn.new([1,1],a,:white)
-p pwn.moves
+# a = Board.new
+# # a[[2,0]] = 5
+# # a[[2,2]] = 5
+# pwn = Pawn.new([1,1],a,:white)
+# p pwn.moves

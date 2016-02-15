@@ -1,5 +1,5 @@
 class Queen < Piece
-  include SlidingPiece
+  prepend SlidingPiece
   def move_dirs
     [
       [0, -1],

@@ -1,5 +1,5 @@
 class Bishop < Piece
-  include SlidingPiece
+  prepend SlidingPiece
 
   def move_dirs
     [
