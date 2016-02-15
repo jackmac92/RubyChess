@@ -1,6 +1,11 @@
 class Piece
-  def initialize(start_pos)
 
+  def initialize(pos, board)
+    @pos = pos
+    @board = board
+  end
+
+  def moves
   end
 
   def to_s
@@ -10,4 +15,5 @@ class Piece
       " "
     end
   end
+
 end

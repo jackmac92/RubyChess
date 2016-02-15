@@ -29,9 +29,11 @@ class Display
     if [i, j] == @cursor
       bg = :light_red
     elsif (i + j).odd?
-      bg = :light_blue
+      bg = :light_black
+    elsif [i, j] == @selected
+      bg = :yellow
     else
-      bg = :blue
+      bg = :light_white
     end
     { background: bg, color: :white }
   end
