@@ -4,9 +4,10 @@ require "./player.rb"
 require "./exceptions.rb"
 require "./piece.rb"
 require "./sliding_piece.rb"
+require "./stepping_piece.rb"
 require "./bishop.rb"
 require "./rook.rb"
 require "./queen.rb"
+require "./king.rb"
+require "./knight.rb"
 require "byebug"
-a = Board.new
-b = Bishop.new([0,0],a)
