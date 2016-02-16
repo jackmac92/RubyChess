@@ -1,12 +1,17 @@
 class Piece
-  attr_accessor :pos
-  attr_reader :color
+  attr_reader :color, :pos
 
   def initialize(pos, board, color)
     @pos = pos
     @board = board
     @color = color
     board[pos] = self
+  end
+
+  def pos=(dest)
+    board[pos] = nil
+    board[dest] = self
+    @pos = dest
   end
 
   def valid_move?(pos)
@@ -30,10 +35,6 @@ class Piece
 
   def dup(new_board)
     self.class.new(self.pos.dup, new_board, self.color)
-  end
-
-  def to_s
-    "#{self.class.to_s[0..1]}"
   end
 
   protected

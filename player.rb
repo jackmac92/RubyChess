@@ -42,7 +42,6 @@ class Player
   def update_overlay(start_pos)
     display.selected = start_pos
     display.highlighted = board[start_pos].valid_moves
-
   end
 
   def check_error(board_start_pos)
@@ -53,7 +52,6 @@ class Player
     elsif board[board_start_pos].moves.count == 0
       raise ChessGameError.new("This piece can't go anywhere!")
     end
-
   end
 
 
