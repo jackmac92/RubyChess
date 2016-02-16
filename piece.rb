@@ -9,16 +9,7 @@ class Piece
     board[pos] = self
   end
 
-  # def to_s
-  #   if nil?
-  #     " "
-  #   else
-  #     " "
-  #   end
-  # end
-
   def valid_move?(pos)
-    # debugger
     @board.in_bounds?(pos) &&
     (@board[pos].nil? || @board[pos].color != self.color)
   end

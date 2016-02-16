@@ -1,5 +1,6 @@
 class Rook < Piece
   prepend SlidingPiece
+
   def move_dirs
     [
       [0, -1],

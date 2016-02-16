@@ -50,31 +50,4 @@ class Pawn < Piece
     " #{pawn} "
   end
 
-
-
-
 end
-
-
-
-#
-# def attackable_positions
-#   new_dirs = []
-#   if color == :black
-#     debugger
-#     [[-1, -1], [-1, 1]].each do |coord|
-#       new_pos = [pos[0] + coord[0], pos[1] + coord[1]]
-#       if board.in_bounds?(coord) && !board[coord].nil?
-#         new_dirs << coord
-#       end
-#     end
-#   else
-#     [[1, -1], [1, 1]].each do |coord|
-#       new_pos = [pos[0] + coord[0], pos[1] + coord[1]]
-#       if board.in_bounds?(new_pos) && !board[new_pos].nil?
-#         new_dirs << coord
-#       end
-#     end
-#   end
-#   new_dirs
-# end

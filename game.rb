@@ -1,21 +1,4 @@
-require "./board.rb"
-require "./display.rb"
-require "./player.rb"
-require "./exceptions.rb"
-require "./piece.rb"
-require "./sliding_piece.rb"
-require "./stepping_piece.rb"
-require "./bishop.rb"
-require "./rook.rb"
-require "./queen.rb"
-require "./king.rb"
-require "./knight.rb"
-require "./pawn.rb"
-
-require "byebug"
-
-
-
+require "./requirements.rb"
 
 class Game
   attr_reader :board, :player_one, :player_two
@@ -82,10 +65,7 @@ class Game
     end
   end
 end
+
 if __FILE__ == $PROGRAM_NAME
-  g = Game.new
-
-  g.play
+  g = Game.new.play
 end
-
-# FIX NIL RENDERING

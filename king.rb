@@ -1,5 +1,6 @@
 class King < Piece
   include SteppingPiece
+
   def move_dirs
     [
       [0, -1],

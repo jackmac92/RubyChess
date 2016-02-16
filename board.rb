@@ -1,4 +1,3 @@
-require "./exceptions"
 class Board
   attr_accessor :grid
   def initialize

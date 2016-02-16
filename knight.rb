@@ -1,5 +1,6 @@
 class Knight < Piece
   include SteppingPiece
+
   def move_dirs
     [
       [-1,2],
@@ -11,7 +12,6 @@ class Knight < Piece
       [-2,-1],
       [2,-1]
     ]
-
   end
 
   def to_s

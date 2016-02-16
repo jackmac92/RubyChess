@@ -1,5 +1,3 @@
-# require "./piece.rb"
-
 module SlidingPiece
 
   def valid_move?(pos)
@@ -18,7 +16,6 @@ module SlidingPiece
 
   def moves
     result = []
-    # debugger
     move_dirs.each do |(dx,dy)|
       tmp_pos = pos
 

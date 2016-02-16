@@ -1,6 +1,3 @@
-require "colorize"
-require "./cursorable"
-
 class Display
   attr_accessor :selected, :highlighted
   attr_reader :board
