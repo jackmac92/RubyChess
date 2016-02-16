@@ -68,8 +68,8 @@ class Game
 
   def populate_black
     player_two.pieces = [
-    King.new([7,3], board, :black),
-    Queen.new([7,4], board, :black),
+    King.new([7,4], board, :black),
+    Queen.new([7,3], board, :black),
     Bishop.new([7,2], board, :black),
     Bishop.new([7,5], board, :black),
     Knight.new([7,1], board, :black),

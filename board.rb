@@ -29,11 +29,13 @@ class Board
   end
 
 
-  def move(start_pos, end_pos)
+  def move(start_pos, end_pos, duped_checking = false)
     piece = self[start_pos]
+    unless duped_checking
+      raise ChessGameError.new("Invalid move to #{end_pos}, try again") unless piece.valid_moves.include?(end_pos)
+    end
     raise ChessGameError.new("No piece at #{start_pos}, try again") if piece.nil?
-    raise ChessGameError.new("Invalid move to #{end_pos}, try again") unless piece.moves.include?(end_pos)
-    
+
     self[end_pos] = piece
     piece.pos = end_pos
     self[start_pos] = nil

@@ -36,7 +36,7 @@ class Player
   def move
     result = nil
     until result
-      @display.render
+      @display.render(self.color)
       result = @display.get_input
     end
     result
@@ -49,12 +49,15 @@ class Player
       if board[start_pos].color != self.color
         raise ChessGameError.new("That is not your piece!")
       end
+      display.highlighted = board[start_pos].valid_moves
       end_pos = move
       display.selected = nil
+      display.highlighted = []
       board.move(start_pos,end_pos)
     rescue ChessGameError => e
       puts e.message
       display.selected = nil
+      display.highlighted = []
       sleep(1)
       retry
     end

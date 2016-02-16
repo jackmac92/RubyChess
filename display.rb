@@ -2,7 +2,8 @@ require "colorize"
 require "./cursorable"
 
 class Display
-  attr_accessor :selected
+  attr_accessor :selected, :highlighted
+  attr_reader :board
   include Cursorable
 
   def initialize(board)
@@ -10,6 +11,7 @@ class Display
     # @game = game
     @cursor = [0,0]
     @selected = nil
+    @highlighted = []
 
   end
 
@@ -31,22 +33,31 @@ class Display
   end
 
   def colors_for(i, j)
+    color = :default
     if [i, j] == @cursor
       bg = :light_red
     elsif [i, j] == @selected
       bg = :yellow
+    elsif @highlighted.include? [i, j]
+      bg = :blue
     elsif (i + j).odd?
       bg = :light_black
-
     else
       bg = :light_white
     end
-    { background: bg, color: :white }
+    piece = board[[i,j]]
+    if piece
+      color = piece.color
+    end
+
+    { background: bg, color: color }
   end
 
-  def render
+  def render(msg)
     system("clear")
     puts "Arrow keys, WASD, or vim to move, space or enter to confirm."
+    puts "It is #{msg.to_s.capitalize} Player's turn!"
+    puts
     build_grid.each { |row| puts row.join }
   end
 
