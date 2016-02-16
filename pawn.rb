@@ -6,10 +6,8 @@ class Pawn < Piece
 
   def attackable_positions
     new_moves = []
-    attack_dirs = [[-1,-1], [-1, 1]]
-    if color == :white
-      attack_dirs.map! { |e| [e.first * -1, e.last] }
-    end
+    attack_dirs = [[-1, -1], [-1, 1]] if color == :black
+    attack_dirs = [[1, -1], [1, 1]] if color == :white
 
     attack_dirs.each do |coord|
       new_pos = [pos[0] + coord[0], pos[1] + coord[1]]
@@ -22,11 +20,12 @@ class Pawn < Piece
 
   def move_dirs
     dirs = color == :black ? [[-1,0]] : [[1,0]]
-    # dirs += attackable_positions
     if pos[0] == 6 && color == :black
-      dirs << [-2,0]
+      ahead_pos = [self.pos[0] - 1, self.pos[1]] #to prevent jumping over piece
+      dirs << [-2,0] unless board[ahead_pos]
     elsif pos[0] == 1 && color == :white
-      dirs << [2,0]
+      ahead_pos = [self.pos[0] + 1, self.pos[1]]
+      dirs << [2,0] unless board[ahead_pos]
     end
     dirs
   end

@@ -15,7 +15,6 @@ class Game
     until game_over?
       curr_player = players.first
       player_move = curr_player.take_turn
-      # board.move(player_move[0],player_move[1])
       curr_player.pieces = board.grid.flatten.select { |piece| piece && piece.color == curr_player.color }
       players.rotate!
     end
