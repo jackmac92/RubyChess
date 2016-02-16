@@ -2,13 +2,14 @@ require "colorize"
 require "./cursorable"
 
 class Display
+  attr_accessor :selected
   include Cursorable
 
   def initialize(board)
     @board = board
     # @game = game
     @cursor = [0,0]
-    @selected = [0,0]
+    @selected = nil
 
   end
 
@@ -21,17 +22,22 @@ class Display
   def build_row(row, i)
     row.map.with_index do |piece, j|
       color_options = colors_for(i, j)
-      piece.to_s.colorize(color_options)
+      if piece
+        piece.to_s.colorize(color_options)
+      else
+        "  ".colorize(color_options)
+      end
     end
   end
 
   def colors_for(i, j)
     if [i, j] == @cursor
       bg = :light_red
-    elsif (i + j).odd?
-      bg = :light_black
     elsif [i, j] == @selected
       bg = :yellow
+    elsif (i + j).odd?
+      bg = :light_black
+
     else
       bg = :light_white
     end

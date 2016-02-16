@@ -24,8 +24,13 @@
 require_relative "display"
 
 class Player
-  def initialize(board)
+  attr_accessor :pieces, :display
+  attr_reader :board, :color
+  def initialize(board, color)
+    @board = board
     @display = Display.new(board)
+    @color = color
+    @pieces = []
   end
 
   def move
@@ -38,8 +43,23 @@ class Player
   end
 
   def take_turn
-    start_pos = move
-    end_pos = move
+    begin
+      start_pos = move
+      display.selected = start_pos
+      if board[start_pos].color != self.color
+        raise ChessGameError.new("That is not your piece!")
+      end
+      end_pos = move
+      display.selected = nil
+      board.move(start_pos,end_pos)
+    rescue ChessGameError => e
+      puts e.message
+      display.selected = nil
+      sleep(1)
+      retry
+    end
     [start_pos,end_pos]
   end
+
+
 end

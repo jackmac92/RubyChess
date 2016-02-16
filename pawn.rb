@@ -14,7 +14,7 @@ class Pawn < Piece
 
     attack_dirs.each do |coord|
       new_pos = [pos[0] + coord[0], pos[1] + coord[1]]
-      if valid_move?(new_pos)
+      if valid_attack_move?(new_pos)
         new_dirs << coord
       end
     end
@@ -30,6 +30,12 @@ class Pawn < Piece
       dirs << [2,0]
     end
     dirs
+  end
+
+  def valid_attack_move?(pos)
+    return false if @board[pos].nil?
+    @board.in_bounds?(pos) &&
+    @board[pos].color != self.color
   end
 
 

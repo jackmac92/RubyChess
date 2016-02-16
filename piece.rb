@@ -18,6 +18,7 @@ class Piece
   # end
 
   def valid_move?(pos)
+    # debugger
     @board.in_bounds?(pos) &&
     (@board[pos].nil? || @board[pos].color != self.color)
   end

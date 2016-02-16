@@ -31,8 +31,9 @@ class Board
 
   def move(start_pos, end_pos)
     piece = self[start_pos]
-    raise ChessGameError.new("No piece at #{start_pos}") if piece.nil?
-    #raise ChessGameError.new("Invalid move at end_pos") if can't move to end_pos
+    raise ChessGameError.new("No piece at #{start_pos}, try again") if piece.nil?
+    raise ChessGameError.new("Invalid move to #{end_pos}, try again") unless piece.moves.include?(end_pos)
+    
     self[end_pos] = piece
     piece.pos = end_pos
     self[start_pos] = nil
@@ -54,5 +55,5 @@ class Board
     pieces = self.grid.flatten.select { |piece| piece && piece.color == color }
     pieces.none? { |piece| piece.valid_moves.size > 0 }
   end
-  
+
 end
