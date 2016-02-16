@@ -13,4 +13,9 @@ class Queen < Piece
     ]
   end
 
+  def to_s
+    queen = "\u2655".encode('utf-8')
+    " #{queen} "
+  end
+
 end

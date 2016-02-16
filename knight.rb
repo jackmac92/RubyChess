@@ -13,4 +13,10 @@ class Knight < Piece
     ]
 
   end
+
+  def to_s
+    knight = "\u2658".encode('utf-8')
+    " #{knight} "
+  end
+
 end

@@ -12,4 +12,10 @@ class King < Piece
       [1, 1]
     ]
   end
+
+  def to_s
+    king = "\u2654".encode('utf-8')
+    " #{king} "
+  end
+
 end

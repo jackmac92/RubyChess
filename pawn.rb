@@ -45,6 +45,10 @@ class Pawn < Piece
     initial_moves += attackable_positions
   end
 
+  def to_s
+    pawn = "\u2659".encode('utf-8')
+    " #{pawn} "
+  end
 
 
 

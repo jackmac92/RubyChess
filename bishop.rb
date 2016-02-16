@@ -10,4 +10,9 @@ class Bishop < Piece
     ]
   end
 
+  def to_s
+    bishop = "\u2657".encode('utf-8')
+    " #{bishop} "
+  end
+
 end
