@@ -36,4 +36,10 @@ class Player
     end
     result
   end
+
+  def take_turn
+    start_pos = move
+    end_pos = move
+    [start_pos,end_pos]
+  end
 end
