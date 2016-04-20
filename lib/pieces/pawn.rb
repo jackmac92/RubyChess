@@ -6,8 +6,7 @@ class Pawn < Piece
 
   def attackable_positions
     new_moves = []
-    attack_dirs = [[-1, -1], [-1, 1]] if color == :black
-    attack_dirs = [[1, -1], [1, 1]] if color == :white
+    attack_dirs = color == :black ? [[-1, -1], [-1, 1]] : [[1, -1], [1, 1]]
 
     attack_dirs.each do |coord|
       new_pos = [pos[0] + coord[0], pos[1] + coord[1]]
@@ -38,9 +37,10 @@ class Pawn < Piece
 
 
   def moves
-    initial_moves = move_dirs.map do |(dx,dy)|
-      [pos[0] + dx, pos[1] + dy]
-    end.select { |loc| board[loc].nil? }
+    initial_moves = move_dirs
+      .map { |(dx,dy)| [pos[0] + dx, pos[1] + dy]}
+      .select { |loc| board[loc].nil? }
+    
     initial_moves += attackable_positions
   end
 

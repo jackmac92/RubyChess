@@ -5,7 +5,6 @@ class Display
 
   def initialize(board)
     @board = board
-    # @game = game
     @cursor = [0,0]
     @selected = nil
     @highlighted = []

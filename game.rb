@@ -1,4 +1,4 @@
-require "./requirements.rb"
+require "./lib/requirements.rb"
 
 class Game
   attr_reader :board, :player_one, :player_two

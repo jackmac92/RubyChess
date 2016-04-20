@@ -16,13 +16,12 @@ class Piece
 
   def valid_move?(pos)
     @board.in_bounds?(pos) &&
-    (@board[pos].nil? || @board[pos].color != self.color)
+      (@board[pos].nil? || @board[pos].color != self.color)
   end
 
   def valid_moves
-    result = []
-    moves.each do |move|
-      result << move unless self.move_into_check?(move)
+    result = moves.reject do |move|
+      self.move_into_check?(move)
     end
     result
   end

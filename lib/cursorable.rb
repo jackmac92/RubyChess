@@ -40,8 +40,8 @@ module Cursorable
       exit 0
     when :return
       @cursor
-    # when :space
-    #   @cursor
+    when :space
+      @cursor
     when :left, :right, :up, :down
       update_pos(MOVES[key])
       nil
