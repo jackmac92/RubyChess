@@ -52,10 +52,10 @@ class Display
 
   def render(msg)
     system("clear")
-    puts "Arrow keys, WASD, or vim to move, space or enter to confirm."
-    puts "It is #{msg.to_s.capitalize} Player's turn!"
-    puts
+    puts "Arrow keys, WASD, or vim to move"
+    puts "Space or enter to confirm."
     build_grid.each { |row| puts row.join }
+    puts "It is #{msg.to_s.capitalize} Player's turn!"
   end
 
 end
