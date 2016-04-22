@@ -5,9 +5,9 @@ class Game
   def initialize
     @board = Board.new
     @player_one = Player.new @board, :white
-    @player_two = Player.new @board, :black
-    populate_white
-    populate_black
+    @player_two = ComputerPlayer.new @board, :black
+    populate
+    # populate_black
   end
 
   def play
@@ -31,40 +31,28 @@ class Game
     false
   end
 
-  def populate_white
-    player_one.pieces = [
-    King.new([0,4], board, :white),
-    Queen.new([0,3], board, :white),
-    Bishop.new([0,2], board, :white),
-    Bishop.new([0,5], board, :white),
-    Knight.new([0,1], board, :white),
-    Knight.new([0,6], board, :white),
-    Rook.new([0,0], board, :white),
-    Rook.new([0,7], board, :white)
-  ]
-    8.times do |col|
-      player_one.pieces << Pawn.new([1, col], board, :white)
-    end
-
-  end
-
-  def populate_black
-    player_two.pieces = [
-    King.new([7,4], board, :black),
-    Queen.new([7,3], board, :black),
-    Bishop.new([7,2], board, :black),
-    Bishop.new([7,5], board, :black),
-    Knight.new([7,1], board, :black),
-    Knight.new([7,6], board, :black),
-    Rook.new([7,0], board, :black),
-    Rook.new([7,7], board, :black)
-  ]
-    8.times do |col|
-      player_two.pieces << Pawn.new([6, col], board, :black)
+  def populate
+    [:black, :white].each do |color|
+      y = color == :black ? 7 : 0
+      player = color == :black ? player_two : player_one
+      player.pieces = [
+        King.new([y,4], board, color),
+        Queen.new([y,3], board, color),
+        Bishop.new([y,2], board, color),
+        Bishop.new([y,5], board, color),
+        Knight.new([y,1], board, color),
+        Knight.new([y,6], board, color),
+        Rook.new([y,0], board, color),
+        Rook.new([y,7], board, color)
+      ]
+      8.times do |col|
+        player.pieces << Pawn.new([(y-1).abs, col], board, color)
+      end
     end
   end
+
 end
 
 if __FILE__ == $PROGRAM_NAME
-  g = Game.new.play
+  Game.new.play
 end
