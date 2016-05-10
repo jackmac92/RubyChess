@@ -29,19 +29,21 @@ class Display
   end
 
   def colors_for(i, j)
-    if [i, j] == @cursor && @highlighted.include?([i, j])
-      bg = :green
-    elsif [i, j] == @cursor
-      bg = :light_red
-    elsif [i, j] == @selected
-      bg = :light_red
-    elsif @highlighted.include? [i, j]
-      bg = :light_yellow
-    elsif (i + j).odd?
-      bg = :light_black
+    case [i, j]
+    when @cursor
+      bg = @highlighted.include?([i,j]) ? :green : :light_red
+    when @selected
+      bg = :light_red      
     else
-      bg = :light_blue
+      if @highlighted.include?([i,j])
+        bg = :light_yellow 
+      elsif (i + j).odd?
+        bg = :light_black
+      else
+        bg = :light_blue
+      end
     end
+
     piece = board[[i,j]]
     if piece
       color = piece.color

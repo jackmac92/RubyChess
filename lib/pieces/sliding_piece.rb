@@ -20,7 +20,7 @@ module SlidingPiece
       tmp_pos = pos
 
       loop do
-        tmp_pos = [tmp_pos[0]+ dx, tmp_pos[1]+dy]
+        tmp_pos = [tmp_pos[0] + dx, tmp_pos[1] + dy]
         case self.valid_move?(tmp_pos)
         when -1
           break

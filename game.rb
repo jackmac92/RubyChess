@@ -5,9 +5,23 @@ class Game
   def initialize
     @board = Board.new
     @player_one = Player.new @board, :white
-    @player_two = ComputerPlayer.new @board, :black
-    populate
-    # populate_black
+    @player_two = single_player_mode? ? ComputerPlayer.new(@board, :black) : Player.new(@board, :black)
+    populate_pieces
+  end
+
+  def single_player_mode?
+    valid_response = nil
+    puts "Play against computer? (y/n)"
+    until valid_response
+      print ">>> "
+      input = gets.chomp.downcase[0]
+      if input == "y" || input == "n"
+        valid_response = true 
+        input = input == "y"
+      end
+    end
+
+    input    
   end
 
   def play
@@ -31,7 +45,7 @@ class Game
     false
   end
 
-  def populate
+  def populate_pieces
     [:black, :white].each do |color|
       y = color == :black ? 7 : 0
       player = color == :black ? player_two : player_one
